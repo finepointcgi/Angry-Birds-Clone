@@ -14,8 +14,6 @@ func _ready():
 	Star1 = $Popup/Star
 	Star2 = $Popup/Star2
 	Star3 = $Popup/Star3
-	GameManager.Score = 1500
-	Popup()
 	pass # Replace with function body.
 
 
@@ -35,3 +33,14 @@ func Popup():
 	if GameManager.Score > 2000:
 		$Tween.interpolate_property(Star3,"rect_size",Vector2(0,0),Vector2(74,74),.5,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
+
+
+
+func _on_Restart_Level_button_down():
+	GameManager.ResetLevel()
+	pass # Replace with function body.
+
+
+func _on_Load_Next_Level_button_down():
+	GameManager.LoadNextLevel()
+	pass # Replace with function body.

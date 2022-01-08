@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://InterfaceManager.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="InterfaceManager" type="CanvasLayer" groups=["InterfaceManager"]]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -883.0
+margin_bottom = -526.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="RichTextLabel" parent="Control"]
+margin_left = 36.0
+margin_top = 27.0
+margin_right = 134.0
+margin_bottom = 106.0
+text = "Score:"
+
+[node name="ScoreValue" type="RichTextLabel" parent="Control"]
+margin_left = 81.0
+margin_top = 27.0
+margin_right = 205.0
+margin_bottom = 48.0
+text = "0"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 268.0
+margin_top = 86.0
+margin_right = -292.0
+margin_bottom = -73.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Load Next Level" type="Button" parent="Popup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -127.0
+margin_top = -116.0
+margin_right = -25.0
+margin_bottom = -29.0
+rect_pivot_offset = Vector2( 28, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart Level" type="Button" parent="Popup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -416.0
+margin_top = -117.0
+margin_right = -314.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 28, 25 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.5
+margin_top = -20.0
+margin_right = 87.5
+margin_bottom = 20.0
+text = "Score: 100000"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup"]
+anchor_right = 1.0
+margin_bottom = 60.0
+
+[node name="Star" type="TextureRect" parent="Popup"]
+anchor_left = 0.127
+anchor_top = 0.145
+anchor_right = 0.287
+anchor_bottom = 0.313
+margin_left = 0.0719986
+margin_top = 0.0549965
+margin_right = -74.168
+margin_bottom = -74.033
+rect_pivot_offset = Vector2( 38, 38 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star2" type="TextureRect" parent="Popup"]
+anchor_left = 0.405
+anchor_top = 0.145
+anchor_right = 0.565
+anchor_bottom = 0.313
+margin_left = 0.0799866
+margin_top = 0.0549965
+margin_right = -74.16
+margin_bottom = -74.033
+rect_pivot_offset = Vector2( 38, 38 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star3" type="TextureRect" parent="Popup"]
+anchor_left = 0.683
+anchor_top = 0.145
+anchor_right = 0.843
+anchor_bottom = 0.313
+margin_left = 0.0879822
+margin_top = 0.0549965
+margin_right = -74.152
+margin_bottom = -74.033
+rect_pivot_offset = Vector2( 38, 38 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="Popup/Load Next Level" to="." method="_on_Load_Next_Level_button_down"]
+[connection signal="button_down" from="Popup/Restart Level" to="." method="_on_Restart_Level_button_down"]

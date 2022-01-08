@@ -11,8 +11,12 @@ enum GameState {
 # var b = "text"
 var CurrentGameState = GameState.Start
 var Score = 0
+var Levels = ["res://MainScene.tscn","res://Level2.tscn"]
+var LevelIndex = 0
+var Win
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -28,10 +32,25 @@ func _process(delta):
 				CurrentGameState = GameState.Win
 			elif birds.size() <= 0:
 				CurrentGameState = GameState.Lose
+			Win = true
 			pass
 		GameState.Win:
-			print("You won!")
-			print(Score)
+			if Win:
+				print(Score)
+				get_tree().get_nodes_in_group("InterfaceManager")[0].Popup()
+				Win = false
 		GameState.Lose:
-			print("You Lost!")
+			if Win:
+				get_tree().get_nodes_in_group("InterfaceManager")[0].Popup()
+				Win = false
+				print("You Lost!")
 	pass
+
+func LoadNextLevel():
+	LevelIndex += 1
+	if LevelIndex > Levels.size() - 1:
+		LevelIndex = 0
+	get_tree().change_scene(Levels[LevelIndex])
+
+func ResetLevel():
+	get_tree().change_scene(Levels[LevelIndex])
