@@ -10,7 +10,7 @@ enum GameState {
 # var a = 2
 # var b = "text"
 var CurrentGameState = GameState.Start
-
+var Score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -31,6 +31,7 @@ func _process(delta):
 			pass
 		GameState.Win:
 			print("You won!")
+			print(Score)
 		GameState.Lose:
 			print("You Lost!")
 	pass

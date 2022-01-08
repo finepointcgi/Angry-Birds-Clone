@@ -42,14 +42,25 @@ func _process(delta):
 				player.position = distance
 				LeftLine.points[1] = distance
 				RightLine.points[1] = distance
+				var velocity = CenterOfSlingshot - distance
+				var pos = CenterOfSlingshot
+				var vel = velocity/20 * distance
+				$ShotLine.clear_points()
+				for i in 5000:
+					$ShotLine.add_point(pos)
+					vel.y += 150 * delta * -1
+					pos += vel * delta * -1
+					if pos.y > $ShotLine.position.y:
+						break
+					pass
 			else:
-				var location = get_global_mouse_position()
-				var distance = location.distance_to(CenterOfSlingshot)
-				var velocity = CenterOfSlingshot - location
-				
+				var distance = get_global_mouse_position()
+				if distance.distance_to(CenterOfSlingshot) > 100:
+					distance = (distance - CenterOfSlingshot).normalized() * 100 + $CenterOfSlingShot.position
+				var velocity = CenterOfSlingshot - distance
 				player.ThrowBird()
 				player = player as RigidBody2D
-				player.apply_impulse(Vector2(), velocity/50 * distance)
+				player.apply_impulse(Vector2(), (velocity/20 * distance) * -1)
 				SlingShotState = SlingState.birdThrown
 				LeftLine.points[1] = CenterOfSlingshot
 				RightLine.points[1] = CenterOfSlingshot
