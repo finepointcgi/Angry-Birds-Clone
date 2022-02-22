@@ -33,4 +33,6 @@ position = Vector2( -1, -128 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="ShotArc" type="Line2D" parent="."]
+
 [connection signal="input_event" from="TouchArea" to="." method="_on_TouchArea_input_event"]

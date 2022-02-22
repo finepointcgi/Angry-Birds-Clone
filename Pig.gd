@@ -31,6 +31,7 @@ func _on_Pig_body_entered(body):
 			else:
 				var damage = body.linear_velocity.length() * 10
 				health -= damage
+				GameManager.Score += damage
 				if health <= 0:
 					queue_free()
 		

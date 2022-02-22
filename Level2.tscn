@@ -127,6 +127,46 @@ position = Vector2( 633, -30 )
 position = Vector2( 613, -73 )
 rotation = -1.5708
 
+[node name="RigidBody2D10" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 697, -30 )
+
+[node name="RigidBody2D11" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 736, -30 )
+
+[node name="RigidBody2D12" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 716, -73 )
+rotation = -1.5708
+
+[node name="RigidBody2D13" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 770, -30 )
+
+[node name="RigidBody2D14" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 809, -30 )
+
+[node name="RigidBody2D15" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 789, -73 )
+rotation = -1.5708
+
+[node name="RigidBody2D16" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 697, -118 )
+
+[node name="RigidBody2D17" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 736, -118 )
+
+[node name="RigidBody2D18" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 716, -161 )
+rotation = -1.5708
+
+[node name="RigidBody2D19" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 770, -118 )
+
+[node name="RigidBody2D20" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 809, -118 )
+
+[node name="RigidBody2D21" parent="Bricks" instance=ExtResource( 5 )]
+position = Vector2( 789, -161 )
+rotation = -1.5708
+
 [node name="RigidBody2D7" parent="Bricks" instance=ExtResource( 5 )]
 position = Vector2( 557, -114 )
 
@@ -139,5 +179,8 @@ rotation = -1.5708
 
 [node name="Pig" parent="." instance=ExtResource( 6 )]
 position = Vector2( 578, -208 )
+
+[node name="Pig2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 755, -208 )
 
 [node name="InterfaceController" parent="." instance=ExtResource( 7 )]

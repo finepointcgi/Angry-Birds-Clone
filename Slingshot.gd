@@ -15,6 +15,7 @@ var LeftLine
 var RightLine
 var Player
 var CenterOfSlingshot
+var pulling = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SlingShotState = SlingState.idle
@@ -35,21 +36,34 @@ func _process(delta):
 			pass
 		SlingState.pulling:
 			var player = get_tree().get_nodes_in_group("Player")[0]
-			if Input.is_action_pressed("Left_Mouse"):
+			if pulling:
 				var distance = get_global_mouse_position()
 				if distance.distance_to(CenterOfSlingshot) > 100:
 					distance = (distance - CenterOfSlingshot).normalized() * 100 + $CenterOfSlingShot.position
 				player.position = distance
 				LeftLine.points[1] = distance
 				RightLine.points[1] = distance
+				var velocity = CenterOfSlingshot - distance
+				var actVelocity = velocity/20 * distance
+				var pointPosition = CenterOfSlingshot
+				$ShotArc.clear_points()
+				for i in 5000:
+					$ShotArc.add_point(pointPosition)
+					actVelocity.y += 150 * delta * -1
+					pointPosition += actVelocity * delta * -1
+					if pointPosition.y > $ShotArc.position.y:
+						break
+					
 			else:
-				var location = get_global_mouse_position()
-				var distance = location.distance_to(CenterOfSlingshot)
-				var velocity = CenterOfSlingshot - location
+				$ShotArc.clear_points()
+				var distance = get_global_mouse_position()
+				if distance.distance_to(CenterOfSlingshot) > 100:
+					distance = (distance - CenterOfSlingshot).normalized() * 100 + $CenterOfSlingShot.position
+				var velocity = CenterOfSlingshot - distance
 				
 				player.ThrowBird()
 				player = player as RigidBody2D
-				player.apply_impulse(Vector2(), velocity/50 * distance)
+				player.apply_impulse(Vector2(), (velocity/20 * distance) * -1)
 				SlingShotState = SlingState.birdThrown
 				LeftLine.points[1] = CenterOfSlingshot
 				RightLine.points[1] = CenterOfSlingshot
@@ -71,6 +85,11 @@ func _process(delta):
 
 func _on_TouchArea_input_event(viewport, event, shape_idx):
 	if SlingShotState == SlingState.idle:
-		if(event is InputEventMouseButton && event.pressed):
+		if((event is InputEventMouseButton || event is InputEventScreenTouch) && event.pressed):
 			SlingShotState = SlingState.pulling
+			pulling = true
 	pass # Replace with function body.
+
+func _input(event):
+	if(event is InputEventScreenTouch && !event.is_pressed()):
+		pulling = false
